@@ -1,0 +1,27 @@
+---
+title: "assignment_1_rmarkdown"
+author: "Emil Hafeez (eh2928)"
+date: "9/14/2020"
+output: github_document
+---
+#Starting Small
+
+This is an R Markdown file I'm creating for P8105. I focus on meaningful naming schemas, readable code, clearly-written explanatory text, and parsimony. 
+
+#Problem 1
+
+We create a data frame which contains a random sample of size 10 from a Gaussian distribution, a logical vector indicating whether elements of the sample are greater than 0, a character vector of length 10, and a factor vector of length 10 with 3 different factor levels. 
+
+```{r}
+#Load and use tibble to create aforementioned data frame
+
+library(tidyverse)
+practice_df = tibble(
+    vec_rnorm_numeric = rnorm(10),
+    vec_greater_than_zero_logical = (vec_rnorm_numeric > 0), 
+    vec_building_characters = c("Will", "I", "always", "get", "a", "headache", "from", "thinking", "too", "hard"),
+    vec_factor_temperature = factor(c("Fahrenheit", "Fahrenheit", "Celsius", "Fahrenheit", "Kelvin", "Fahrenheit", "Celsius", "Kelvin", "Kelvin", "Fahrenheit"))
+)
+```
+
+
