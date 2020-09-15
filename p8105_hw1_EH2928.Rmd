@@ -16,7 +16,7 @@ library(tidyverse)
 #Problem 1
 
 We create a data frame which contains a random sample of size ten from a normal distribution, a logical vector indicating whether elements of the sample are greater than 0, a character vector of length 10, and a factor vector of length 10 with 3 different factor levels. 
-=
+
 ```{r}
 #Load and use tibble to create aforementioned data frame
 practice_df = tibble(
@@ -35,12 +35,21 @@ mean(practice_df$vec_building_characters)
 mean(practice_df$vec_temperature_factor)
 ##The numeric and logical vectors work for this, and does not for string (characters and factors) variables.
 ```
-##Create code chunk for converting variable types, using alternative pull() command
-```{r echo = true, results = 'hide'}
+##Create code chunk for converting variable types, propmt asks for all numeric conversions, then different conversions for different variables.
+```{r echo = TRUE, results = 'hide'}
 as.numeric(pull(practice_df, vec_greater_than_zero_logical))
-as.numeric(pull(practice_df, vec_building_characters))
+as.numeric(pull(practice_df, vec_building_characters)) ## Removed
 as.numeric(pull(practice_df, vec_temperature_factor))
 ```
+##Assignment deliverables for variable type conversion and manipulation
+
+```{r}
+as.numeric(pull(practice_df, vec_greater_than_zero_logical)) * pull(practice_df, vec_rnorm_numeric)
+as.factor(pull(practice_df, vec_greater_than_zero_logical)) * pull(practice_df, vec_rnorm_numeric)
+as.numeric(as.factor(pull(practice_df, vec_greater_than_zero_logical))) * pull(practice_df, vec_rnorm_numeric)
+
+```
+
 
 
 
