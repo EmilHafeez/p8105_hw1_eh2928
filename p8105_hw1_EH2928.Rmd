@@ -23,8 +23,8 @@ We create a data frame which contains a random sample of size 10 from a normal d
 practice_df = tibble(
     vec_rnorm_numeric = rnorm(10),
     vec_greater_than_zero_logical = (vec_rnorm_numeric > 0), 
-    vec_building_characters = c("Will", "I", "always", "get", "a", "headache", "from", "thinking", "too", "hard"),
-    vec_factor_temperature = factor(c("Fahrenheit", "Fahrenheit", "Celsius", "Fahrenheit", "Kelvin", "Fahrenheit", "Celsius", "Kelvin", "Kelvin", "Fahrenheit"))
+    vec_building_characters = c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J"),
+    vec_temperature_factor = factor(c("Fahrenheit", "Fahrenheit", "Celsius", "Fahrenheit", "Kelvin", "Fahrenheit", "Celsius", "Kelvin", "Kelvin", "Fahrenheit"))
 )
 
 #Take the mean after each variable.
@@ -33,13 +33,13 @@ practice_df = tibble(
 mean(practice_df$vec_rnorm_numeric)
 mean(practice_df$vec_greater_than_zero_logical) 
 mean(practice_df$vec_building_characters)
-mean(practice_df$vec_factor_temperature)
+mean(practice_df$vec_temperature_factor)
 ##The numeric and logical vectors work for this, and does not for string (characters and factors) variables.
 ```
 ##Create code chunk for converting variable types
 
 ```{r echo = true, results = 'hide'}
-as.numeric(practice_df$vec_greater_than_zero_logical, practice_df$vec_building_characters, practice_df$vec_factor_temperature)
+as.numeric(practice_df$vec_greater_than_zero_logical, practice_df$vec_building_characters, practice_df$vec_temperature_factor)
 
 
 ```
