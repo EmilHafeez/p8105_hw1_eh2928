@@ -13,11 +13,10 @@ This is an R Markdown file for P8105 Homework 1. I focus on meaningful naming sc
 library(tidyverse)
 ```
 
-
 #Problem 1
 
-We create a data frame which contains a random sample of size 10 from a normal distribution, a logical vector indicating whether elements of the sample are greater than 0, a character vector of length 10, and a factor vector of length 10 with 3 different factor levels. 
-
+We create a data frame which contains a random sample of size ten from a normal distribution, a logical vector indicating whether elements of the sample are greater than 0, a character vector of length 10, and a factor vector of length 10 with 3 different factor levels. 
+=
 ```{r}
 #Load and use tibble to create aforementioned data frame
 practice_df = tibble(
@@ -26,21 +25,22 @@ practice_df = tibble(
     vec_building_characters = c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J"),
     vec_temperature_factor = factor(c("Fahrenheit", "Fahrenheit", "Celsius", "Fahrenheit", "Kelvin", "Fahrenheit", "Celsius", "Kelvin", "Kelvin", "Fahrenheit"))
 )
-
 #Take the mean after each variable.
-#I learn, after 2 hours, you need to use $ to select the variable from the dataframe! Duh.
-#Taking the mean() of all variables creates a N/A error, as anticipated, and so we mean() each individually for illustrative purposes.
+
+#We mean() each variable individually for illustrative purposes.
+#Jeff accomplishes this in live lecture using mean(pull(practice_df, vec_rnorm_numeric)). I will test this too. 
 mean(practice_df$vec_rnorm_numeric)
-mean(practice_df$vec_greater_than_zero_logical) 
+mean(practice_df$vec_greater_than_zero_logical) #implicitly 1's and 0's by coercion
 mean(practice_df$vec_building_characters)
 mean(practice_df$vec_temperature_factor)
 ##The numeric and logical vectors work for this, and does not for string (characters and factors) variables.
 ```
-##Create code chunk for converting variable types
-
+##Create code chunk for converting variable types, using alternative pull() command
 ```{r echo = true, results = 'hide'}
-as.numeric(practice_df$vec_greater_than_zero_logical, practice_df$vec_building_characters, practice_df$vec_temperature_factor)
-
-
+as.numeric(pull(practice_df, vec_greater_than_zero_logical))
+as.numeric(pull(practice_df, vec_building_characters))
+as.numeric(pull(practice_df, vec_temperature_factor))
 ```
+
+
 
