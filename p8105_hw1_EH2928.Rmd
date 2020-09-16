@@ -8,7 +8,10 @@ output: github_document
 
 This is an R Markdown file for P8105 Homework 1. I focus on meaningful naming schemas, readable code, clearly-written explanatory text, and parsimony. 
 
-##Library Loaders Section
+#Library Loaders Section
+
+Let's load all the libraries we'll need to execute Assignment 1.
+
 ```{r}
 library(tidyverse)
 ```
@@ -25,10 +28,9 @@ practice_df = tibble(
     vec_building_characters = c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J"),
     vec_temperature_factor = factor(c("Fahrenheit", "Fahrenheit", "Celsius", "Fahrenheit", "Kelvin", "Fahrenheit", "Celsius", "Kelvin", "Kelvin", "Fahrenheit"))
 )
-#Take the mean after each variable.
 
 #We mean() each variable individually for illustrative purposes.
-#Jeff accomplishes this in live lecture using mean(pull(practice_df, vec_rnorm_numeric)). I will test this too. 
+#Jeff accomplishes this in 9/15/2020 live lecture using mean(pull(practice_df, vec_rnorm_numeric)). I will test this too. 
 mean(practice_df$vec_rnorm_numeric)
 mean(practice_df$vec_greater_than_zero_logical) #implicitly 1's and 0's by coercion
 mean(practice_df$vec_building_characters)
@@ -50,7 +52,7 @@ as.numeric(as.factor(pull(practice_df, vec_greater_than_zero_logical))) * pull(p
 
 #Problem 2
 
-Load the penguins dataset and examine the basics
+Let's load the penguins dataset and examine the basics.
 ```{r}
 data("penguins", package = "palmerpenguins")
 penguins
@@ -64,7 +66,14 @@ ncol(penguins)
 mean(penguins$flipper_length_mm)
 mean(pull(penguins, flipper_length_mm), na.rm = TRUE)
 ```
-This is a dataset with with 344 observations of 8 variables, and describes 3 species of penguins on 3 different islands; there are measurements on bill length and depth, flipper length, body mass, sex, and year, though there are missing data. 
+This is a dataset with with 344 observations of 8 variables, and describes details about 3 species of penguin on 3 different islands; there are measurements on bill length and depth, flipper length, body mass, sex, and year, though there are missing data. 
 
 The dataset has `r nrow(penguins)` rows (observations of penguins, it seems), and `r ncol(penguins)` columns. The mean flipper length is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)`.
 
+#Scatterplot
+Let's make a scatterplot of the penguins' bill lengths on the x-axis and flipper lengths on the y-axis, and use color to differentiate species.
+
+```{r}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+ggsave("plot_penguin_bill_and_flipper_length_by_species.pdf", height = 4, width = 4)
+```
