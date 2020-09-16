@@ -35,21 +35,36 @@ mean(practice_df$vec_building_characters)
 mean(practice_df$vec_temperature_factor)
 ##The numeric and logical vectors work for this, and does not for string (characters and factors) variables.
 ```
-##Create code chunk for converting variable types, propmt asks for all numeric conversions, then different conversions for different variables.
+Now, we create a code chunk for converting variable types, propmt asks for all numeric conversions, then different conversions for different variables.
 ```{r echo = TRUE, results = 'hide'}
 as.numeric(pull(practice_df, vec_greater_than_zero_logical))
-as.numeric(pull(practice_df, vec_building_characters)) ## Removed
+as.numeric(pull(practice_df, vec_building_characters))
 as.numeric(pull(practice_df, vec_temperature_factor))
 ```
-##Assignment deliverables for variable type conversion and manipulation
-
+Next, we implement the code converting the variable types
 ```{r}
 as.numeric(pull(practice_df, vec_greater_than_zero_logical)) * pull(practice_df, vec_rnorm_numeric)
 as.factor(pull(practice_df, vec_greater_than_zero_logical)) * pull(practice_df, vec_rnorm_numeric)
 as.numeric(as.factor(pull(practice_df, vec_greater_than_zero_logical))) * pull(practice_df, vec_rnorm_numeric)
-
 ```
 
+#Problem 2
 
+Load the penguins dataset and examine the basics
+```{r}
+data("penguins", package = "palmerpenguins")
+penguins
+head(penguins)
+tail(penguins)
+summary(penguins)
+anyNA(penguins)
+nrow(penguins)
+ncol(penguins)
 
+mean(penguins$flipper_length_mm)
+mean(pull(penguins, flipper_length_mm), na.rm = TRUE)
+```
+This is a dataset with with 344 observations of 8 variables, and describes 3 species of penguins on 3 different islands; there are measurements on bill length and depth, flipper length, body mass, sex, and year, though there are missing data. 
+
+The dataset has `r nrow(penguins)` rows (observations of penguins, it seems), and `r ncol(penguins)` columns. The mean flipper length is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)`.
 
